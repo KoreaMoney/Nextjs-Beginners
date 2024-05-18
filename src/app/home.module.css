@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  gap: 100px;
+}
+
+.textContainer {
+  flex: 1;
+}
+
+.title {
+  font-size: 65px;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 15px;
+  line-height: 2;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  padding: 20px;
+  min-width: -20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.button:first-child {
+  background-color: var(--btn);
+  color: var(--text);
+}
+
+.brands {
+  width: 500px;
+  height: 50px;
+  position: relative;
+  filter: grayscale(100%);
+}
+
+.brandImg {
+}
+
+.imgContainer {
+  flex: 1;
+  position: relative;
+}
+
+.heroImg {
+}
