@@ -16,7 +16,9 @@ const Home = () => {
           <button className={styles.button}>Contact</button>
         </div>
         <div className={styles.brands}>
-          <Image src="/brands.png" alt="brands" className={styles.brandImg} fill />
+          <Image src="/linkedin.png" alt="brands" className={styles.brandImg} width={160} height={50} />
+          <Image src="/git.png" alt="brands" className={styles.brandImg} width={190} height={50} />
+          <Image src="/velog.png" alt="brands" className={styles.brandImg} width={100} height={50} />
         </div>
       </div>
       <div className={styles.imgContainer}>

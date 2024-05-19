@@ -22,6 +22,10 @@ const links = [
     title: "Blog",
     path: "/blog",
   },
+  {
+    title: "Tech",
+    path: "/tech",
+  },
 ];
 
 const Links = () => {

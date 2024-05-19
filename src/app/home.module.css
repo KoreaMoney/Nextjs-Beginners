@@ -40,7 +40,15 @@
   width: 500px;
   height: 50px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
   filter: grayscale(100%);
+}
+
+.brandImg {
+  filter: brightness(40%);
 }
 
 .imgContainer {
