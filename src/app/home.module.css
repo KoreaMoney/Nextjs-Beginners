@@ -43,13 +43,37 @@
   filter: grayscale(100%);
 }
 
-.brandImg {
-}
-
 .imgContainer {
   flex: 1;
   position: relative;
 }
 
-.heroImg {
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 58px;
+  }
+  .desc {
+    font-size: 12px;
+  }
+
+  .brands {
+    width: 100%;
+  }
 }
