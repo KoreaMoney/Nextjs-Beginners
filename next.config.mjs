@@ -10,6 +10,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "img.freepik.com",
       },
+      {
+        protocol: "https",
+        hostname: "blog.kakaocdn.net",
+      },
+      {
+        protocol: "https",
+        hostname: "images.velog.io",
+      },
     ],
   },
 };
