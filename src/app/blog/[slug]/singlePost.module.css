@@ -10,7 +10,7 @@
 }
 
 .img {
-  object-fit: contain;
+  object-fit: fill;
 }
 
 .textContainer {
@@ -45,7 +45,7 @@
 }
 
 .detailValue:hover {
-  color: grey;
+  color: lightblue;
 }
 
 .content {

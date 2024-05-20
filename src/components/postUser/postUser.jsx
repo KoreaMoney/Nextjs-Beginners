@@ -10,12 +10,12 @@ import styles from "./postUser.module.css";
 // };
 
 const PostUser = async ({ social }) => {
-  // const user = await getData(userId);
+  const user = await getUser(userId);
 
   return (
     <div className={styles.container}>
       <span className={styles.title}>Social</span>
-      <span className={styles.linkname}>{social?.name}</span>
+      <span className={styles.linkname}>{social.socialname}</span>
     </div>
   );
 };
