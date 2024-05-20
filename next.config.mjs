@@ -18,6 +18,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.velog.io",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.engage-ai.co",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn-icons-png",
+      },
     ],
   },
 };

@@ -1,21 +1,15 @@
 import styles from "./postUser.module.css";
+import { getUser } from "@/lib/data";
 
-// FETCH DATA WITH AN API
-// const getData = async (linkId) => {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/users/${linkId}`, { cache: "no-store" });
-//   if (!res.ok) {
-//     throw new Error("Something went wrong");
-//   }
-//   return res.json();
-// };
-
-const PostUser = async ({ social }) => {
-  const user = await getUser(userId);
+const PostUser = async ({ id }) => {
+  const social = await getUser(id);
 
   return (
     <div className={styles.container}>
-      <span className={styles.title}>Social</span>
-      <span className={styles.linkname}>{social.socialname}</span>
+      <div className={styles.texts}>
+        <span className={styles.title}>Social</span>
+        <span className={styles.linkname}>{social.socialname}</span>
+      </div>
     </div>
   );
 };

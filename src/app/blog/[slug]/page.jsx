@@ -2,6 +2,8 @@ import Image from "next/image";
 import styles from "./singlePost.module.css";
 import Link from "next/link";
 import { getPost } from "@/lib/data";
+import { Suspense } from "react";
+import PostUser from "@/components/postUser/postUser";
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
@@ -17,6 +19,11 @@ const SinglePostPage = async ({ params }) => {
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
           <Image className={styles.avatar} src={post.img} alt="post" width={50} height={50} />
+          {post && (
+            <Suspense fallback={<div>Loading...</div>}>
+              <PostUser id={post.userId} />
+            </Suspense>
+          )}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Link</span>
             <Link href={post.link} rel="noopener noreferrer" target="_blank" className={styles.detailValue}>
