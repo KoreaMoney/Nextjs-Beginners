@@ -24,16 +24,25 @@
 }
 
 .button {
-  padding: 20px;
+  padding: 15px;
   min-width: -20px;
+  height: 50px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
+}
+.button:hover {
+  filter: brightness(90%);
 }
 
 .button:first-child {
   background-color: var(--btn);
   color: var(--text);
+}
+
+.button:last-child {
+  background-color: var(--text);
+  color: var(--btn);
 }
 
 .brands {

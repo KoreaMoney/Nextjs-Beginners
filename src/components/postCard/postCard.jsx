@@ -12,7 +12,7 @@ const PostCard = ({ post }) => {
         <span className={styles.date}>Social.@2024</span>
       </div>
       <div className={styles.bottom}>
-        <h1 className={styles.title}>{post.title}</h1>
+        <h1 className={styles.title}>{post.slug}</h1>
         <p className={styles.desc}>{post.minidesc}</p>
         <Link className={styles.link} href={`/blog/${post.slug}`}>
           READ MORE

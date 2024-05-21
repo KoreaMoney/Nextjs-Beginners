@@ -26,6 +26,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn-icons-png",
       },
+      {
+        protocol: "https",
+        hostname: "w7.pngwing.com",
+      },
     ],
   },
 };

@@ -4,6 +4,15 @@ import Link from "next/link";
 import { getPost } from "@/lib/data";
 import { Suspense } from "react";
 import PostUser from "@/components/postUser/postUser";
+// 동적 metadata
+export const generateMetadata = async ({ params }) => {
+  const { slug } = params;
+  const post = await getPost(slug);
+  return {
+    title: post.slug,
+    description: post.desc,
+  };
+};
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
