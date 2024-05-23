@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getPost } from "@/lib/data";
 import { Suspense } from "react";
 import PostUser from "@/components/postUser/postUser";
+
 // 동적 metadata
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
@@ -14,10 +15,18 @@ export const generateMetadata = async ({ params }) => {
   };
 };
 
+//FETCH DATA WITH AN API
+const getData = async (slug) => {
+  const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
+  if (!res.ok) throw new Error("Something went wrong");
+  return res.json();
+};
+
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
 
-  const post = await getPost(slug);
+  // const post = await getPost(slug);
+  const post = await getData(slug);
 
   return (
     <div className={styles.container}>
