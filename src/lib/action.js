@@ -2,8 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { connectToDb } from "./utils";
-import { Post } from "./models";
+import { Post, User } from "./models";
 import { signIn, signOut } from "./auth";
+import bcrypt from "bcrypt";
 
 export const addPost = async (formData) => {
   /**
@@ -44,4 +45,43 @@ export const handleGithubLogin = async () => {
 export const handleLogout = async () => {
   "use server";
   await signOut();
+};
+
+export const register = async (formData) => {
+  const { socialname, email, password, img, passwordRepeat } = Object.fromEntries(formData);
+  if (password !== passwordRepeat) {
+    return "Passwords do not match";
+  }
+
+  try {
+    connectToDb();
+    const user = await User.findOne({ socialname });
+    if (user) {
+      return "User already registered";
+    }
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hashPassword(password, salt);
+
+    const newUser = new User({
+      socialname,
+      email,
+      password: hashedPassword,
+      img,
+    });
+    await newUser.save();
+  } catch (err) {
+    console.log(err);
+    return { err: "Something went wrong" };
+  }
+};
+
+export const login = async (formData) => {
+  const { socialname, password } = Object.fromEntries(formData);
+
+  try {
+    await signIn("credentials", { socialname, password });
+  } catch (err) {
+    console.log(err);
+    return { err: "Something went wrong" };
+  }
 };
