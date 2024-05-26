@@ -14,3 +14,19 @@
   gap: 30px;
   border-radius: 5px;
 }
+
+.github {
+  width: 100%;
+  height: 56px;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: azure;
+}
+
+.github:hover {
+  background-color: var(--textSoft);
+}

@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { connectToDb } from "./utils";
 import { Post, User } from "./models";
 import { signIn, signOut } from "./auth";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export const addPost = async (formData) => {
   /**
@@ -18,9 +18,10 @@ export const addPost = async (formData) => {
     const newPost = new Post({ title, desc, minidesc, slug, link, userId });
     await newPost.save();
     revalidatePath("/blog");
-  } catch (err) {
-    console.log(err);
-    return { err: "Something went wrong" };
+    revalidatePath("/admin");
+  } catch (error) {
+    console.log(error);
+    return { error: "Something went wrong" };
   }
 };
 
@@ -31,9 +32,47 @@ export const deletePost = async (formData) => {
     connectToDb();
     await Post.findByIdAndDelete(id);
     revalidatePath("/blog");
+    revalidatePath("/admin");
+  } catch (error) {
+    console.log(error);
+    return { error: "Something went wrong" };
+  }
+};
+
+export const addUser = async (prevState, formData) => {
+  const { socialname, email, password, img } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+    const newUser = new User({
+      socialname,
+      email,
+      password,
+      img,
+    });
+
+    await newUser.save();
+    console.log("saved to db");
+    revalidatePath("/admin");
   } catch (err) {
     console.log(err);
-    return { err: "Something went wrong" };
+    return { error: "Something went wrong!" };
+  }
+};
+
+export const deleteUser = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+
+    await Post.deleteMany({ userId: id });
+    await User.findByIdAndDelete(id);
+    console.log("deleted from db");
+    revalidatePath("/admin");
+  } catch (err) {
+    console.log(err);
+    return { error: "Something went wrong!" };
   }
 };
 
@@ -47,20 +86,20 @@ export const handleLogout = async () => {
   await signOut();
 };
 
-export const register = async (formData) => {
+export const register = async (previousState, formData) => {
   const { socialname, email, password, img, passwordRepeat } = Object.fromEntries(formData);
   if (password !== passwordRepeat) {
-    return "Passwords do not match";
+    return { error: "Passwords do not match" };
   }
 
   try {
     connectToDb();
     const user = await User.findOne({ socialname });
     if (user) {
-      return "User already registered";
+      return { error: "User already registered" };
     }
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hashPassword(password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = new User({
       socialname,
@@ -69,19 +108,23 @@ export const register = async (formData) => {
       img,
     });
     await newUser.save();
-  } catch (err) {
-    console.log(err);
-    return { err: "Something went wrong" };
+    return { success: true };
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
-export const login = async (formData) => {
+export const login = async (previousState, formData) => {
   const { socialname, password } = Object.fromEntries(formData);
 
   try {
     await signIn("credentials", { socialname, password });
-  } catch (err) {
-    console.log(err);
-    return { err: "Something went wrong" };
+  } catch (error) {
+    console.log(error);
+    if (error.message.includes("CredentialsSignin")) {
+      return { error: "Invalid name or password" };
+    }
+    throw error;
   }
 };

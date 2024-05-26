@@ -1,17 +1,19 @@
-import { handleGithubLogin, login } from "@/lib/action";
-import React from "react";
+import LoginForm from "@/components/loginForm/loginForm";
+import { handleGithubLogin } from "@/lib/action";
+import styles from "./login.module.css";
+import { FaGithub } from "react-icons/fa";
 
-const LoginPage = async () => {
+const LoginPage = () => {
   return (
-    <div>
-      <form action={handleGithubLogin}>
-        <button>Login with Github</button>
-      </form>
-      <form action={login}>
-        <input type="text" placeholder="socialname" name="socialname" />
-        <input type="password" placeholder="password" name="password" />
-        <button>Login with Credentials</button>
-      </form>
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <form action={handleGithubLogin}>
+          <button className={styles.github}>
+            <FaGithub size={30} />
+          </button>
+        </form>
+        <LoginForm />
+      </div>
     </div>
   );
 };
