@@ -13,7 +13,7 @@ const AdminPosts = async () => {
         <div className={styles.post} key={post.id}>
           <div className={styles.detail}>
             <Image src={post.img || "/noAvatar.png"} alt="" width={50} height={50} />
-            <span className={styles.postTitle}>{post.title}</span>
+            <span className={styles.postTitle}>{post.slug}</span>
           </div>
           <form action={deletePost}>
             <input type="hidden" name="id" value={post.id} />

@@ -6,7 +6,7 @@ import { useFormState } from "react-dom";
 
 const AdminPostForm = ({ userId }) => {
   const [state, formAction] = useFormState(addPost, undefined);
-
+  console.log("state", state);
   return (
     <form action={formAction} className={styles.container}>
       <h1>Add New Post</h1>
@@ -14,6 +14,8 @@ const AdminPostForm = ({ userId }) => {
       <input type="text" name="title" placeholder="Title" />
       <input type="text" name="slug" placeholder="slug" />
       <input type="text" name="img" placeholder="img" />
+      <input type="text" name="minidesc" placeholder="minidesc" />
+      <input type="text" name="link" placeholder="link" />
       <textarea type="text" name="desc" placeholder="desc" rows={10} />
       <button>Add</button>
       {state?.error}

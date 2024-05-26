@@ -10,7 +10,7 @@ const AdminUserForm = () => {
   return (
     <form action={formAction} className={styles.container}>
       <h1>Add New User</h1>
-      <input type="text" name="username" placeholder="username" />
+      <input type="text" name="socialname" placeholder="socialname" />
       <input type="text" name="email" placeholder="email" />
       <input type="password" name="password" placeholder="password" />
       <input type="text" name="img" placeholder="img" />

@@ -6,7 +6,7 @@ import { Post, User } from "./models";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcryptjs";
 
-export const addPost = async (formData) => {
+export const addPost = async (prevState, formData) => {
   /**
    * Object.entries(obj) : 객체 ==> 배열
    * Object.fromEntries(arr) : 배열 ==> 객체

@@ -13,7 +13,7 @@ const AdminUsers = async () => {
         <div className={styles.user} key={user.id}>
           <div className={styles.detail}>
             <Image src={user.img || "/noAvatar.png"} alt="" width={50} height={50} />
-            <span>{user.username}</span>
+            <span>{user.socialname}</span>
           </div>
           <form action={deleteUser}>
             <input type="hidden" name="id" value={user.id} />

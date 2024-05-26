@@ -52,7 +52,6 @@ const postSchema = new mongoose.Schema(
     },
     link: {
       type: String,
-      required: true,
     },
     slug: {
       type: String,
