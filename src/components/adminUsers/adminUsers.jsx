@@ -2,7 +2,6 @@ import { getUsers } from "@/lib/data";
 import styles from "./adminUsers.module.css";
 import Image from "next/image";
 import { deleteUser } from "@/lib/action";
-import noAvatar from "../../../public/noAvatar.png";
 
 const AdminUsers = async () => {
   const users = await getUsers();
@@ -13,7 +12,7 @@ const AdminUsers = async () => {
       {users.map((user) => (
         <div className={styles.user} key={user.id}>
           <div className={styles.detail}>
-            <Image src={user.img || noAvatar} alt="사용자 이미지" width={50} height={50} />
+            <Image src={user.img || "/noavatar.png"} alt="사용자 이미지" width={50} height={50} />
             <span>{user.socialname}</span>
           </div>
           <form action={deleteUser}>
