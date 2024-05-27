@@ -1,0 +1,73 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  position: relative;
+  transition: 250ms ease-in-out;
+  perspective: 500px;
+  margin-top: 50px;
+  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능함을 나타냄 */
+}
+
+.wrapper:hover .imageBox {
+  transform: rotateY(45deg) rotateX(45deg); /* Y축과 X축 모두에서 회전 */
+  transition: transform 0.5s ease-in-out; /* 부드러운 전환 효과 */
+}
+
+.wrapper:hover .images {
+  width: 120px;
+  height: 120px;
+  transform: translateX(20px) translateY(-20px); /* 위치 변화 추가 */
+  transition: all 0.5s ease-in-out; /* 모든 변화에 대해 부드러운 전환 적용 */
+}
+
+.imageBox {
+  border-radius: 12px;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: inherit;
+  height: inherit;
+  transition: 250ms;
+  transform-style: preserve-3d;
+  transform-origin: bottom right;
+  transform: rotateZ(15deg);
+  will-change: transform;
+  box-shadow: 18px 0 30px #a5a5a5ba;
+  background-color: #f9f9f9b4;
+}
+
+.images {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: inherit;
+  height: inherit;
+  background-color: #ffffff79;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  transition: 250ms;
+  transform-style: preserve-3d;
+  transform-origin: top left;
+  overflow: hidden;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  object-fit: contain;
+  width: 50%;
+  height: 50%;
+}
+
+.name {
+  font-size: medium;
+}
