@@ -12,7 +12,7 @@
   transition: 250ms ease-in-out;
   perspective: 500px;
   margin-top: 50px;
-  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능함을 나타냄 */
+  cursor: pointer;
 }
 
 .wrapper:hover .imageBox {

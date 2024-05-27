@@ -76,3 +76,11 @@ a {
     width: 380px;
   }
 }
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+.scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

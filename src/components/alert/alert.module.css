@@ -1,0 +1,73 @@
+.container {
+  background-color: var(--btn);
+  position: absolute;
+  bottom: 15%;
+  width: 300px;
+  height: 50px;
+  right: 0;
+  border-radius: 15px;
+  animation: slideInRight 0.5s forwards, slideOutRight 0.5s 3s forwards;
+}
+
+.errorContainer {
+  background-color: rgb(255, 82, 82);
+  position: absolute;
+  bottom: 15%;
+  width: 300px;
+  height: 50px;
+  right: 0;
+  border-radius: 15px;
+  animation: slideInRight 0.5s forwards, slideOutRight 0.5s 3s forwards;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+@keyframes slideInRight {
+  from {
+    right: 0%; /* 시작 위치 */
+    opacity: 0;
+  }
+  to {
+    right: 5%; /* 최종 위치 */
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    right: 5%; /* 시작 위치 */
+    opacity: 1;
+  }
+  to {
+    right: 0%; /* 최종 위치 */
+    opacity: 0;
+  }
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll {
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
