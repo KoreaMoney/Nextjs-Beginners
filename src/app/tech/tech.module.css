@@ -85,6 +85,14 @@
     width: 80px;
     height: 80px;
   }
+  .wrapper:hover .imageBox {
+    transform: rotateY(-45deg) rotateX(-45deg); /* Y축과 X축 모두에서 회전 */
+    transition: transform 0.5s ease-in-out; /* 부드러운 전환 효과 */
+  }
+  .wrapper:hover .images {
+    width: 90px;
+    height: 90px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -95,6 +103,14 @@
     gap: 40px;
   }
   .wrapper {
+    width: 60px;
+    height: 60px;
+  }
+  .wrapper:hover .imageBox {
+    transform: rotateY(-45deg) rotateX(-45deg); /* Y축과 X축 모두에서 회전 */
+    transition: transform 0.5s ease-in-out; /* 부드러운 전환 효과 */
+  }
+  .wrapper:hover .images {
     width: 60px;
     height: 60px;
   }
