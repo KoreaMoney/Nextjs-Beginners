@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   flex-wrap: wrap;
+  margin: auto;
+  gap: 80px;
 }
 
 .wrapper {
@@ -70,4 +72,30 @@
 
 .name {
   font-size: medium;
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    flex-wrap: wrap;
+    gap: 70px;
+  }
+  .wrapper {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  .wrapper {
+    width: 60px;
+    height: 60px;
+  }
 }
